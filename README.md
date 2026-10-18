@@ -1,79 +1,76 @@
-<div align="center">
+﻿# Problema de las Ciudades con GUI
 
-# Problema de las Ciudades con GUI
+<p align="center">
+  <a href="https://github.com/Matthew-Garay/CiudadesGUI/actions/workflows/ci.yml"><img src="https://github.com/Matthew-Garay/CiudadesGUI/actions/workflows/ci.yml/badge.svg" alt="CI Status"/></a>
+  <a href="https://github.com/Matthew-Garay/CiudadesGUI/security/dependabot"><img src="https://img.shields.io/badge/Dependabot-enabled-blue?style=flat-square&logo=github&labelColor=555555" alt="Dependabot"/></a>
+</p>
 
-**Práctica de Inteligencia Artificial en Prolog** — rutas entre ciudades de Rumania con búsqueda de costo uniforme e interfaz gráfica PCE.
+El clasico problema de las rutas entre ciudades de Rumania resuelto con busqueda de costo uniforme (UCS) y presentado con una ventana grafica construida con la librería PCE de SWI-Prolog.
 
-[![SWI-Prolog](https://img.shields.io/badge/SWI--Prolog-8.x-007ACC?style=flat-square)](https://www.swi-prolog.org/)
-[![PCE](https://img.shields.io/badge/GUI-PCE-6f42c1?style=flat-square)](https://www.swi-prolog.org/pldoc/man?section=pce)
-[![IA](https://img.shields.io/badge/IA-UCS-2ea44f?style=flat-square)]()
+## Stack tecnologico
 
-</div>
+- **Lenguaje:** SWI-Prolog
+- **Paradigma:** Programacion logica, busqueda informada, interfaz grafica
+- **Entorno:** SWI-Prolog 8.x con libreria PCE
 
----
+## Arquitectura
 
-## Descripción
-
-El clásico problema de las **rutas entre ciudades de Rumania** resuelto con **búsqueda de costo uniforme (UCS)** y presentado con una **ventana gráfica** construida con la librería **PCE** de SWI-Prolog.
-
-Es una práctica académica de Inteligencia Artificial que demuestra la búsqueda informada por costo acumulado: el primer camino que llega al destino es siempre el más corto.
-
-## Características
-
-- **20 ciudades** de Rumania conectadas por carreteras con distancia en kilómetros (doble sentido).
-- **Búsqueda de costo uniforme (UCS):** la lista de pendientes se mantiene ordenada por costo acumulado.
-- **Interfaz gráfica (GUI)** con la librería PCE: selector de origen y destino y botón de búsqueda.
-- Resultado mostrado en pantalla como lista de distancias acumuladas.
-
-## Tecnologías utilizadas
-
-- **Lenguaje:** Prolog
-- **Intérprete:** SWI-Prolog 8.x con soporte de **PCE** (entorno gráfico)
-
-## Requisitos previos
-
-- SWI-Prolog con la librería `pce` instalada.
-- Un entorno gráfico (Windows nativo o X11 en Linux) para abrir la ventana.
-
-## Instalación
-
-```bash
-git clone https://github.com/Matthew-Garay/CiudadesGUI.git
-cd CiudadesGUI
-swipl ciudadesGUI.pl
+```mermaid
+graph TD
+    A[Ciudades de Rumania] --> B[Grafo con costos de arista]
+    B --> C[Busqueda de costo uniforme UCS]
+    C --> D[Ruta de costo minimo]
+    D --> E[Interfaz grafica PCE]
+    
+    style A fill:#e1f5fe,stroke:#01579b
+    style B fill:#fff3e0,stroke:#e65100
+    style C fill:#e8f5e9,stroke:#1b5e20
+    style D fill:#f3e5f5,stroke:#4a148c
+    style E fill:#ffe0b2,stroke:#ef6c00
 ```
 
-## Uso
+## Caracteristicas
 
-**Con interfaz gráfica:**
+- Rutas entre ciudades de Rumania con costos asociados
+- Busqueda de costo uniforme (UCS) para camino optimo
+- Interfaz grafica con la libreria PCE de SWI-Prolog
+- Primera llegada al destino es siempre el camino mas corto
 
-```prolog
-?- iniciar.
-```
+## Como ejecutar
 
-Se abre una ventana donde eliges **origen** y **destino** y pulsas *Buscar*.
+### Requisitos previos
 
-**Sin ventana (algoritmo directo):**
+- SWI-Prolog 8.x con la libreria PCE instalada
 
-```prolog
-?- buscar_ruta(arad, bucurest, Ruta).
-```
+### Ejecucion
+
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/Matthew-Garay/CiudadesGUI.git
+   cd CiudadesGUI
+   ```
+2. Ejecuta el archivo principal con SWI-Prolog:
+   ```bash
+   swipl -s ciudadesGUI.pl -g "main" -t "halt"
+   ```
+3. Se abre una ventana grafica mostrando las rutas entre ciudades.
 
 ## Estructura del proyecto
 
 ```
 CiudadesGUI/
-├── ciudadesGUI.pl               # Programa Prolog (rutas + UCS + GUI PCE)
-├── Práctica 15. Problema de las ciudades con GUI.pdf
-├── IA práctica ciudades con GUI.pdf
-└── README.md
+├── ciudadesGUI.pl           # Codigo fuente en Prolog
+├── .gitignore               # Archivos excluidos del control de versiones
+├── LICENSE                  # Licencia MIT
+├── README.md                # Este archivo
+└── docs/                    # Documentacion extendida
+    ├── setup-guide.md       # Guia de instalacion
+    └── architecture.md      # Diagrama de arquitectura
 ```
 
-## Licencia
+## Contacto
 
-Proyecto académico y educativo; puedes usarlo libremente con fines de aprendizaje.
-
-## Autor
-
-**Matthew Garay** — [GitHub](https://github.com/Matthew-Garay)
-
+<p align="center">
+  <a href="mailto:1911.garay.perez@gmail.com"><img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/></a>
+  <a href="https://www.linkedin.com/in/matthewgarayperez/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
+</p>

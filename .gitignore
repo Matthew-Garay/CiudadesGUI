@@ -1,0 +1,16 @@
+# SWI-Prolog
+*.po
+*.qlf
+__prolog_start__
+
+# Sistemas operativos
+.DS_Store
+Thumbs.db
+
+# Editores de codigo
+.idea/
+.vscode/
+
+# Salida y logs
+*.out
+*.log

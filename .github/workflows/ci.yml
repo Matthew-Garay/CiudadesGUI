@@ -1,0 +1,19 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  check:
+    runs_on: ubuntu-latest
+    steps:
+      - name: Checkout codigo
+        uses: actions/checkout@v4
+
+      - name: Verificar archivo Prolog
+        run: |
+          test -f ciudadesGUI.pl && echo "ciudadesGUI.pl presente" || echo "Falta ciudadesGUI.pl"
+          test -f README.md && echo "README.md presente" || echo "Falta README.md"
