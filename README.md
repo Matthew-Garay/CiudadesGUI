@@ -1,76 +1,62 @@
-﻿# Problema de las Ciudades con GUI
+# Problema de las Ciudades con GUI
 
-<p align="center">
-  <a href="https://github.com/Matthew-Garay/CiudadesGUI/actions/workflows/ci.yml"><img src="https://github.com/Matthew-Garay/CiudadesGUI/actions/workflows/ci.yml/badge.svg" alt="CI Status"/></a>
-  <a href="https://github.com/Matthew-Garay/CiudadesGUI/security/dependabot"><img src="https://img.shields.io/badge/Dependabot-enabled-blue?style=flat-square&logo=github&labelColor=555555" alt="Dependabot"/></a>
-</p>
+## A. Titulo del Proyecto y Resumen Ejecutivo
 
-El clasico problema de las rutas entre ciudades de Rumania resuelto con busqueda de costo uniforme (UCS) y presentado con una ventana grafica construida con la librería PCE de SWI-Prolog.
+Problema de las Ciudades con GUI es una implementacion del clasico problema de las rutas entre ciudades de Rumania, resuelto con el algoritmo de busqueda de costo uniforme (UCS) y presentado mediante una interfaz grafica construida con la libreria PCE de SWI-Prolog. El sistema encuentra la ruta de costo minimo entre dos ciudades dentro de un grafo ponderado que representa el mapa de Rumania. Su alcance tecnologico se limita a la ejecucion local en SWI-Prolog con interfaz grafica, sin componentes de red ni persistencia de datos.
 
-## Stack tecnologico
+## B. Arquitectura del Sistema
 
-- **Lenguaje:** SWI-Prolog
-- **Paradigma:** Programacion logica, busqueda informada, interfaz grafica
-- **Entorno:** SWI-Prolog 8.x con libreria PCE
+El programa sigue una arquitectura de capas logicas basada en programacion logica con interfaz grafica. El flujo de datos comienza con la definicion del grafo de ciudades de Rumania y los costos de arista entre nodos. El algoritmo de busqueda de costo uniforme explora el espacio de estados expandiendo primero el nodo con menor costo acumulado, garantizando que la primera llegada al destino es el camino de costo minimo. Finalmente, la libreria PCE renderiza la ruta encontrada en una ventana grafica para el usuario. No existe comunicacion cliente-servidor ni capas de persistencia.
 
-## Arquitectura
+## C. Caracteristicas Tecnicas Clave
 
-```mermaid
-graph TD
-    A[Ciudades de Rumania] --> B[Grafo con costos de arista]
-    B --> C[Busqueda de costo uniforme UCS]
-    C --> D[Ruta de costo minimo]
-    D --> E[Interfaz grafica PCE]
-    
-    style A fill:#e1f5fe,stroke:#01579b
-    style B fill:#fff3e0,stroke:#e65100
-    style C fill:#e8f5e9,stroke:#1b5e20
-    style D fill:#f3e5f5,stroke:#4a148c
-    style E fill:#ffe0b2,stroke:#ef6c00
+- Representacion del mapa de Rumania como grafo ponderado con nodos (ciudades) y aristas (rutas con costos).
+- Algoritmo de busqueda de costo uniforme (UCS) para encontrar el camino de costo minimo entre dos ciudades.
+- Interfaz grafica construida con la libreria PCE de SWI-Prolog que muestra las rutas y el resultado de la busqueda.
+- Garantia de optimalidad: la primera llegada al nodo destino corresponde al camino de costo minimo.
+- Persistencia limitada a la ejecucion en memoria; no se utiliza base de datos ni almacenamiento en disco.
+- Ausencia de mecanismos de concurrencia, procesamiento en tiempo real o protocolos de red.
+- Seguridad limitada al ambito de ejecucion local; no maneja datos sensibles ni autenticacion.
+
+## D. Especificacion del Stack Tecnologico
+
+| Categoria | Tecnologia / Librería |
+|-----------|----------------------|
+| Lenguaje | SWI-Prolog 8.x |
+| Paradigma | Programacion logica, busqueda informada, interfaz grafica |
+| Libreria GUI | PCE (SWI-Prolog) |
+| Entorno | SWI-Prolog 8.x con libreria PCE |
+
+## E. Guia de Instalacion, Configuracion y Despliegue
+
+### Requisitos previos del sistema
+
+- SWI-Prolog 8.x instalado con la libreria PCE.
+- Acceso a terminal o consola de comandos.
+- Sistema operativo con soporte para ventanas graficas (X11, Windows o macOS).
+
+### Secuencia de comandos para clonacion e instalacion
+
+```bash
+git clone https://github.com/Matthew-Garay/CiudadesGUI.git
+cd CiudadesGUI
 ```
 
-## Caracteristicas
+### Configuracion de variables de entorno
 
-- Rutas entre ciudades de Rumania con costos asociados
-- Busqueda de costo uniforme (UCS) para camino optimo
-- Interfaz grafica con la libreria PCE de SWI-Prolog
-- Primera llegada al destino es siempre el camino mas corto
+Este proyecto no requiere archivo .env ni variables de entorno.
 
-## Como ejecutar
+### Comandos para ejecucion en entorno de Desarrollo
 
-### Requisitos previos
-
-- SWI-Prolog 8.x con la libreria PCE instalada
-
-### Ejecucion
-
-1. Clona el repositorio:
-   ```bash
-   git clone https://github.com/Matthew-Garay/CiudadesGUI.git
-   cd CiudadesGUI
-   ```
-2. Ejecuta el archivo principal con SWI-Prolog:
-   ```bash
-   swipl -s ciudadesGUI.pl -g "main" -t "halt"
-   ```
-3. Se abre una ventana grafica mostrando las rutas entre ciudades.
-
-## Estructura del proyecto
-
-```
-CiudadesGUI/
-├── ciudadesGUI.pl           # Codigo fuente en Prolog
-├── .gitignore               # Archivos excluidos del control de versiones
-├── LICENSE                  # Licencia MIT
-├── README.md                # Este archivo
-└── docs/                    # Documentacion extendida
-    ├── setup-guide.md       # Guia de instalacion
-    └── architecture.md      # Diagrama de arquitectura
+```bash
+swipl -s ciudadesGUI.pl -g "main" -t "halt"
 ```
 
-## Contacto
+### Comandos para ejecucion en entorno de Produccion
 
-<p align="center">
-  <a href="mailto:1911.garay.perez@gmail.com"><img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/></a>
-  <a href="https://www.linkedin.com/in/matthewgarayperez/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
-</p>
+No aplica entorno de produccion separado; el programa se ejecuta localmente con el mismo comando de desarrollo.
+
+## F. Creditos de Autoría
+
+Desarrollado por: Matthew Ilveneff Garay Pérez
+Correo Electronico: 1911.garay.perez@gmail.com
